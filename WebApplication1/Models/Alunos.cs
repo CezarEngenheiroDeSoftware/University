@@ -5,8 +5,8 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Sobrenome { get; set; }
-        public DateTime Matricula { get; set; }
-        public int Idade { get; set; }
+        public DateTime InscricaoData { get; set; }
+        public ICollection<Inscricao> Inscricao {get; set;}
 
     }
 }
