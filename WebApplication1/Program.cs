@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using WebApplication1.Data;
+
 namespace WebApplication1
 {
     public class Program
@@ -7,8 +11,12 @@ namespace WebApplication1
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<SchoolContext>(options =>
+            {
+             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
             builder.Services.AddControllersWithViews();
-
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
