@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Alunos Page";
+}
+
+<h2 class="mb-3">Lista de Alunos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success mb-3">Adicionar Novo Aluno</a>
+</p>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data de Inscrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aluno in Model)
+        {
+            <tr>
+                <td>@aluno.Name</td>
+                <td>@aluno.Sobrenome</td>
+                <td>@aluno.InscricaoData.ToString("dd/MM/yyyy")</td>
+                <td>@aluno.Grade</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@aluno.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Details" asp-route-id="@aluno.Id" class="btn btn-info btn-sm">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@aluno.Id" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
